@@ -28,8 +28,7 @@ class CityDailyViewModel(application: Application) : AndroidViewModel(applicatio
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<CityDailyResponse>() {
                     override fun onSuccess(t: CityDailyResponse) {
-                        var cityDailyResponse = t
-                        cityDailyDataList = cityDailyResponse.list!!
+                        cityDailyDataList = t.list!!
                         cityDailyData.value = cityDailyDataList
                         cityDailyLoading.value = false
                         Log.i("Daily Data : ", "Çalıştı")

@@ -31,8 +31,7 @@ class FiveDaysViewModel(application: Application) : AndroidViewModel(application
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<ForecastResponse>() {
                     override fun onSuccess(t: ForecastResponse) {
-                        var forecastResponse = t
-                        forecastDataList = forecastResponse.list!!
+                        forecastDataList = t.list!!
                         forecastData.value = forecastDataList
                         fiveDaysLoading.value = false
                         Log.i("BİLGİ : ", "CALIŞTI")

@@ -1,54 +1,55 @@
 package com.ismailhakkiaydin.weather.util
 
-import android.graphics.drawable.Drawable
-import android.media.Image
+import android.annotation.SuppressLint
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.ismailhakkiaydin.weather.R
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
+import java.util.Date
 
 
 fun dateConverter(): String {
-    var date = Calendar.getInstance().time
-    var converter = SimpleDateFormat("EEE, d MMM yyyy", Locale("en"))
-    var convertedDate = converter.format(date)
+    val date = Calendar.getInstance().time
+    val converter = SimpleDateFormat("EEE, d MMM yyyy", Locale("en"))
 
-    return convertedDate
+    return converter.format(date)
 }
 
+@SuppressLint("SimpleDateFormat")
 fun timeConverter(time: Long): String {
-    var converter = SimpleDateFormat("hh:mm a")
-    var convertedTime = converter.format(Date(time*1000))
+    val converter = SimpleDateFormat("hh:mm a")
 
-    return convertedTime
+    return converter.format(Date(time * 1000))
 }
 
-fun dayConverter(time: Long) : String{
-    var converter = SimpleDateFormat("EEE, d MMM yyyy hh:mm a")
-    var convertedDay = converter.format(Date(time*1000))
+@SuppressLint("SimpleDateFormat")
+fun dayConverter(time: Long): String {
+    val converter = SimpleDateFormat("EEE, d MMM yyyy hh:mm a")
 
-    return convertedDay
+    return converter.format(Date(time * 1000))
 }
 
+@SuppressLint("SimpleDateFormat")
 @BindingAdapter("android:dayConverter")
 fun convertToDay(view: TextView, value:Long){
-    var converter = SimpleDateFormat("EEE, d MMM yyyy hh:mm a")
-    var convertedDay = converter.format(Date(value*1000))
+    val converter = SimpleDateFormat("EEE, d MMM yyyy hh:mm a")
+    val convertedDay = converter.format(Date(value*1000))
     view.text = convertedDay
 }
 
 @BindingAdapter("android:converterInt")
 fun convertToInt(view: TextView, value:Double){
-    var valueInt = value.toInt()
-    var valueStrin = valueInt.toString()
+    val valueInt = value.toInt()
+    val valueStrin = valueInt.toString()
     view.text = valueStrin
 }
 
+@SuppressLint("DiscouragedApi")
 @BindingAdapter("layoutBackgroundImage")
 fun setLayoutBackgroundImage(constraintLayout: ConstraintLayout, url: String?){
     when(url){
@@ -62,6 +63,7 @@ fun setLayoutBackgroundImage(constraintLayout: ConstraintLayout, url: String?){
 
 }
 
+@SuppressLint("DiscouragedApi")
 @BindingAdapter("backgroundResource")
 fun setBackgroundResource(constraintLayout: ConstraintLayout, url: String){
     when(url){
