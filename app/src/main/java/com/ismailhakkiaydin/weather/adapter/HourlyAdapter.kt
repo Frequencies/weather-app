@@ -1,7 +1,6 @@
 package com.ismailhakkiaydin.weather.adapter
 
-import android.content.Context
-import android.content.res.Resources
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,15 +9,12 @@ import com.ismailhakkiaydin.weather.R
 import com.ismailhakkiaydin.weather.databinding.ForecastWeatherHourlyItemBinding
 import com.ismailhakkiaydin.weather.model.ForecastResponse
 import com.ismailhakkiaydin.weather.util.dayConverter
-import kotlin.math.roundToInt
 
-class HourlyAdapter(val hourlyList: ArrayList<ForecastResponse.Forecast>) :
+class HourlyAdapter(private val hourlyList: ArrayList<ForecastResponse.Forecast>) :
     RecyclerView.Adapter<HourlyAdapter.HourlyViewHolder>() {
 
     class HourlyViewHolder(var view: ForecastWeatherHourlyItemBinding) :
-        RecyclerView.ViewHolder(view.root) {
-
-    }
+        RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -45,6 +41,7 @@ class HourlyAdapter(val hourlyList: ArrayList<ForecastResponse.Forecast>) :
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateHourlyList(newHourlyList: List<ForecastResponse.Forecast>){
         hourlyList.clear()
         hourlyList.addAll(newHourlyList)
