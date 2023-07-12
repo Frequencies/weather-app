@@ -36,14 +36,14 @@ fun dayConverter(time: Long): String {
 
 @SuppressLint("SimpleDateFormat")
 @BindingAdapter("android:dayConverter")
-fun convertToDay(view: TextView, value:Long){
+fun convertToDay(view: TextView, value: Long) {
     val converter = SimpleDateFormat("EEE, d MMM yyyy hh:mm a")
-    val convertedDay = converter.format(Date(value*1000))
+    val convertedDay = converter.format(Date(value * 1000))
     view.text = convertedDay
 }
 
 @BindingAdapter("android:converterInt")
-fun convertToInt(view: TextView, value:Double){
+fun convertToInt(view: TextView, value: Double) {
     val valueInt = value.toInt()
     val valueStrin = valueInt.toString()
     view.text = valueStrin
@@ -51,13 +51,25 @@ fun convertToInt(view: TextView, value:Double){
 
 @SuppressLint("DiscouragedApi")
 @BindingAdapter("layoutBackgroundImage")
-fun setLayoutBackgroundImage(constraintLayout: ConstraintLayout, url: String?){
-    when(url){
-        "01d","02d","03d","04d","09d","10d","11d","13d","50d" -> {
-            constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("ic_background_daylight","drawable", constraintLayout.context.packageName))
+fun setLayoutBackgroundImage(constraintLayout: ConstraintLayout, url: String?) {
+    when (url) {
+        "01d", "02d", "03d", "04d", "09d", "10d", "11d", "13d", "50d" -> {
+            constraintLayout.setBackgroundResource(
+                constraintLayout.resources.getIdentifier(
+                    "ic_background_daylight",
+                    "drawable",
+                    constraintLayout.context.packageName
+                )
+            )
         }
-        "01n","02n","03n","04n","09n","10n","11n","13n","50n" -> {
-            constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("ic_background_night","drawable", constraintLayout.context.packageName))
+        "01n", "02n", "03n", "04n", "09n", "10n", "11n", "13n", "50n" -> {
+            constraintLayout.setBackgroundResource(
+                constraintLayout.resources.getIdentifier(
+                    "ic_background_night",
+                    "drawable",
+                    constraintLayout.context.packageName
+                )
+            )
         }
     }
 
@@ -65,34 +77,143 @@ fun setLayoutBackgroundImage(constraintLayout: ConstraintLayout, url: String?){
 
 @SuppressLint("DiscouragedApi")
 @BindingAdapter("backgroundResource")
-fun setBackgroundResource(constraintLayout: ConstraintLayout, url: String){
-    when(url){
-        "01d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_sunny_weather","drawable", constraintLayout.context.packageName))
-        "01n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_sunny_weather","drawable", constraintLayout.context.packageName))
-        "02d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_sunny_weather","drawable", constraintLayout.context.packageName))
-        "02n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_cloudly_weather","drawable", constraintLayout.context.packageName))
-        "03d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_cloudly_weather","drawable", constraintLayout.context.packageName))
-        "03n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_cloudly_weather","drawable", constraintLayout.context.packageName))
-        "04d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_cloudly_weather","drawable", constraintLayout.context.packageName))
-        "04n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_cloudly_weather","drawable", constraintLayout.context.packageName))
-        "09d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_rainy_weather","drawable", constraintLayout.context.packageName))
-        "09n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_rainy_weather","drawable", constraintLayout.context.packageName))
-        "10d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_rainy_weather","drawable", constraintLayout.context.packageName))
-        "10n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_rainy_weather","drawable", constraintLayout.context.packageName))
-        "11d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_rainy_weather","drawable", constraintLayout.context.packageName))
-        "11n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_rainy_weather","drawable", constraintLayout.context.packageName))
-        "13d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_snowy_weather","drawable", constraintLayout.context.packageName))
-        "13n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_snowy_weather","drawable", constraintLayout.context.packageName))
-        "50d" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_foggy_weather","drawable", constraintLayout.context.packageName))
-        "50n" -> constraintLayout.setBackgroundResource(constraintLayout.resources.getIdentifier("background_foggy_weather","drawable", constraintLayout.context.packageName))
+fun setBackgroundResource(constraintLayout: ConstraintLayout, url: String) {
+    when (url) {
+        "01d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources
+                .getIdentifier(
+                    "background_sunny_weather",
+                    "drawable",
+                    constraintLayout.context.packageName
+                )
+        )
+        "01n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources
+                .getIdentifier(
+                    "background_sunny_weather",
+                    "drawable",
+                    constraintLayout.context.packageName
+                )
+        )
+        "02d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_sunny_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "02n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_cloudly_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "03d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_cloudly_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "03n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_cloudly_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "04d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_cloudly_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "04n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_cloudly_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "09d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_rainy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "09n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_rainy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "10d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_rainy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "10n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_rainy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "11d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_rainy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "11n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_rainy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "13d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_snowy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "13n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_snowy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "50d" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_foggy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
+        "50n" -> constraintLayout.setBackgroundResource(
+            constraintLayout.resources.getIdentifier(
+                "background_foggy_weather",
+                "drawable",
+                constraintLayout.context.packageName
+            )
+        )
     }
 }
 
 
-
 @BindingAdapter("imageResource")
-fun setImageResource(imageview: ImageView, url:String){
-    when(url){
+fun setImageResource(imageview: ImageView, url: String) {
+    when (url) {
         "01d" -> imageview.setImageDrawable(imageview, R.drawable.ic_01d)
         "01n" -> imageview.setImageDrawable(imageview, R.drawable.ic_01n)
         "02d" -> imageview.setImageDrawable(imageview, R.drawable.ic_02d)
@@ -115,6 +236,6 @@ fun setImageResource(imageview: ImageView, url:String){
 
 }
 
-private fun ImageView.setImageDrawable(view:ImageView,image: Int) {
-        Glide.with(context).load(image).into(view)
+private fun ImageView.setImageDrawable(view: ImageView, image: Int) {
+    Glide.with(context).load(image).into(view)
 }

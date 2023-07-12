@@ -6,7 +6,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.ismailhakkiaydin.weather.api.WeatherAPIClient
 import com.ismailhakkiaydin.weather.model.WeatherResponse
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
@@ -24,7 +23,6 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
         disposable.add(
             apiClient.getDataFromGps(latitude, longitude, units)
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<WeatherResponse>() {
                     override fun onSuccess(t: WeatherResponse) {
                         locationData.value = t
